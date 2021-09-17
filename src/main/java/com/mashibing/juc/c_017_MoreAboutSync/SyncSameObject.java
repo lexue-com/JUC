@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 public class SyncSameObject {
 
-	/*final*/ Object o = new Object();
+	/*final*/ Object o = new Object(); //final可以禁止对象发生改变
 
 	void m() {
 		synchronized(o) {

@@ -1,6 +1,6 @@
 /**
- * ���ͬ��������ĸ���Ч�ķ�����ʹ��AtomXXX��
- * AtomXXX�౾����������ԭ���Եģ������ܱ�֤�����������������ԭ���Ե�
+ * 解决同样的问题的更高效的方法，使用AtomXXX类
+ * AtomXXX类本身方法都是原子性的，但不能保证多个方法连续调用是原子性的
  * @author mashibing
  */
 package com.mashibing.juc.c_018_00_AtomicXXX;
@@ -18,7 +18,8 @@ public class T01_AtomicInteger {
 	/*synchronized*/ void m() {
 		for (int i = 0; i < 10000; i++)
 			//if count1.get() < 1000
-			count.incrementAndGet(); //count1++
+			//count++不是线程安全的，但是count.incrementAndGet()线程安全
+			count.incrementAndGet();
 	}
 
 	public static void main(String[] args) {
