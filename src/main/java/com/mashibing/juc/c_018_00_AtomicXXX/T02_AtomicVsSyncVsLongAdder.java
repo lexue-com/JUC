@@ -4,6 +4,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.LongAdder;
 
+/**
+ * 执行如下程序会发现执行效率 Synchronized < Atomic < LongAdder
+ * Atomic是无锁操作，所以它比Synchronized快
+ * 并发数特别高的时候LongAdder内部使用了分段锁，分段锁是将线程分段处理最后再合并，而且分段锁其实也用的是CAS无锁操作
+ */
+
 public class T02_AtomicVsSyncVsLongAdder {
     static long count2 = 0L;
     static AtomicLong count1 = new AtomicLong(0L);
@@ -59,7 +65,7 @@ public class T02_AtomicVsSyncVsLongAdder {
         System.out.println("Sync: " + count2 + " time " + (end-start));
 
 
-        //----------------------------------
+        //-----------------------------------------------------------------
         for(int i=0; i<threads.length; i++) {
             threads[i] =
                     new Thread(()-> {
@@ -77,7 +83,7 @@ public class T02_AtomicVsSyncVsLongAdder {
 
         //TimeUnit.SECONDS.sleep(10);
 
-        System.out.println("LongAdder: " + count1.longValue() + " time " + (end-start));
+        System.out.println("LongAdder: " + count3.longValue() + " time " + (end-start));
 
     }
 
