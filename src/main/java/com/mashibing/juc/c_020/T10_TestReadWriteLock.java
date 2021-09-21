@@ -7,11 +7,14 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
+/**
+ * 读写锁，可以分出来读锁、写锁，readLock实际上是一把共享锁，writeLock是排他锁
+ */
 public class T10_TestReadWriteLock {
-    static Lock lock = new ReentrantLock();
+    static Lock lock = new ReentrantLock(); //互斥锁也叫排他锁，只能一个线程运行
     private static int value;
 
-    static ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+    static ReadWriteLock readWriteLock = new ReentrantReadWriteLock(); //读写锁
     static Lock readLock = readWriteLock.readLock();
     static Lock writeLock = readWriteLock.writeLock();
 

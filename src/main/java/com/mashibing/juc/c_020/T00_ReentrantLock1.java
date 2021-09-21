@@ -1,5 +1,5 @@
 /**
- * reentrantlock用于替代synchronized
+ * Reentrantlock用于替代synchronized
  * 本例中由于m1、m2都锁定this,m1先获得锁只有m1执行完毕的时候,m2才能执行
  * 这里是复习synchronized最原始的语义
  * @author mashibing

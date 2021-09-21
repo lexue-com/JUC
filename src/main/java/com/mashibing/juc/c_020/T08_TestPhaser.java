@@ -4,6 +4,10 @@ import java.util.Random;
 import java.util.concurrent.Phaser;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Phaser是按照不同阶段执行线程的，分成好几个阶段的栅栏
+ * 举例：这里模拟了一个结婚的场景，第一个阶段：所有人到场  第二个阶段：所有人吃饭  第三个阶段：所有人离开
+ */
 public class T08_TestPhaser {
     static Random r = new Random();
     static MarriagePhaser phaser = new MarriagePhaser();
@@ -38,8 +42,9 @@ public class T08_TestPhaser {
 
     }
 
-
+    //自己定义有几个阶段
     static class MarriagePhaser extends Phaser {
+        //onAdvance是在栅栏被推倒之后自动调用的
         @Override
         protected boolean onAdvance(int phase, int registeredParties) {
 

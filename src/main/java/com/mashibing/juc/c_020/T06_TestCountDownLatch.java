@@ -3,7 +3,7 @@ package com.mashibing.juc.c_020;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * 递减锁存器的计数，如果计数到达零，则释放所有等待的线程，如果当前计数大于零，则将计数减少.
+ * 倒数门栓：递减锁存器的计数，如果计数到达零，则释放所有等待的线程，如果当前计数大于零，则将计数减少.
  */
 public class T06_TestCountDownLatch {
     public static void main(String[] args) {
