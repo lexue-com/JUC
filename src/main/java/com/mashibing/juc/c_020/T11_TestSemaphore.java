@@ -3,13 +3,13 @@ package com.mashibing.juc.c_020;
 import java.util.concurrent.Semaphore;
 
 /**
- * 信号灯：最多允许指定个数的线程同时运行，
- * 使用场景：限流
+ * 信号灯：最多允许指定个数的线程同时运行
+ * 使用场景：限流，如8条车道，只有2个收费站窗口，即最多有2个线程同时出口
  */
 public class T11_TestSemaphore {
     public static void main(String[] args) {
         //Semaphore s = new Semaphore(2);
-        Semaphore s = new Semaphore(2, true);   // permits:允许的灯个数
+        Semaphore s = new Semaphore(2, true);   // permits:允许同时执行的线程个数，好比收费窗口
         //允许一个线程同时执行
         //Semaphore s = new Semaphore(1);
 
