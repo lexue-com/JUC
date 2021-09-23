@@ -3,7 +3,9 @@ package com.mashibing.juc.c_020;
 import java.util.concurrent.CountDownLatch;
 
 /**
- * 倒数门栓：递减锁存器的计数，如果计数到达零，则释放所有等待的线程，如果当前计数大于零，则将计数减少.
+ * 倒数门栓：是通过一个计数器来实现的，计数器的初始值是线程的数量。
+ * 每当一个线程执行完毕后，计数器的值就-1，当计数器的值为0时，表示所有线程都执行完毕，
+ * 然后打开门栓在闭锁上等待的线程就可以恢复工作了
  */
 public class T06_TestCountDownLatch {
     public static void main(String[] args) {

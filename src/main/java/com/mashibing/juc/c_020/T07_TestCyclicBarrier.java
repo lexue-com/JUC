@@ -24,10 +24,10 @@ public class T07_TestCyclicBarrier {
 
                 new Thread(()->{
                     try {
-                        barrier.await(); //阻塞到这里等够20个线程
+                        barrier.await(); //线程调用await() 表示自己已经到达栅栏，阻塞到这里等够20个线程
                     } catch (InterruptedException e) {
                         e.printStackTrace();
-                    } catch (BrokenBarrierException e) {
+                    } catch (BrokenBarrierException e) { //BrokenBarrierException表示栅栏已经被破坏，破坏的原因可能是其中一个线程 await() 时被中断或者超时
                         e.printStackTrace();
                     }
                 }).start();

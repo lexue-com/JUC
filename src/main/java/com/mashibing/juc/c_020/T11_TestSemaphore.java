@@ -15,7 +15,7 @@ public class T11_TestSemaphore {
 
         new Thread(()->{
             try {
-                s.acquire();  //必须获取到信号灯许可才能继续往下执行，获取到，信号灯个数就会-1，如果是0取不到灯就会阻塞
+                s.acquire();  //必须获取到信号灯许可才能继续往下执行，获取之前一直将线程阻塞，获取到，信号灯个数就会-1，如果是0取不到灯就会阻塞
 
                 System.out.println("T1 running...");
                 Thread.sleep(200);
